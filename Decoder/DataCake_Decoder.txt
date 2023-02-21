@@ -1,0 +1,30 @@
+// 1-17-23  Datacake function decoder 
+// V1 1-17-23 Initial efforts
+
+function Decoder(payload, port) {
+    
+    console.log("Version 1");
+    
+    var good_logins=payload[3]*16777216+payload[2]*65536+payload[1]*256+payload[0];
+    var failed_logins=payload[7]*16777216+payload[6]*65536+payload[5]*256+payload[4];
+    
+    var login_time=payload[11]*16777216+payload[10]*65536+payload[9]*256+payload[8];
+    
+    return [
+        {
+            field:"GOOD_LOGINS",
+            value: good_logins
+        },    
+        
+        {
+            field:"FAILED_LOGINS",
+            value: failed_logins
+        },
+        
+        {
+            field:"LOGIN_TIME",
+            value: login_time
+        }
+        
+    ];
+}
